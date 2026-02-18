@@ -4,7 +4,6 @@ import {
   createContext,
   useContext,
   useState,
-  useEffect,
   useCallback,
   type ReactNode,
 } from "react";
@@ -54,29 +53,13 @@ export const CHAOS_FEATURES: { key: ChaosFeature; label: string; description: st
 ];
 
 const DEFAULT_STATE: ChaosState = {
-  drunkMouse: false,
-  unclickableCookieBanner: false,
-  toastStorm: false,
+  drunkMouse: true,
+  unclickableCookieBanner: true,
+  toastStorm: true,
   whackAMole: false,
   drunkMode: false,
-  trippingBalls: false,
+  trippingBalls: true,
 };
-
-const STORAGE_KEY = "shitcn-chaos-state";
-
-function getInitialState(): ChaosState {
-  if (typeof window === "undefined") return DEFAULT_STATE;
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      return { ...DEFAULT_STATE, ...parsed };
-    }
-  } catch {
-    // ignore
-  }
-  return DEFAULT_STATE;
-}
 
 interface ChaosContextValue {
   state: ChaosState;
@@ -90,16 +73,7 @@ interface ChaosContextValue {
 const ChaosContext = createContext<ChaosContextValue | null>(null);
 
 export function ChaosProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<ChaosState>(getInitialState);
-
-  // Persist to localStorage on change
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    } catch {
-      // ignore
-    }
-  }, [state]);
+  const [state, setState] = useState<ChaosState>(DEFAULT_STATE);
 
   const toggle = useCallback((feature: ChaosFeature) => {
     setState((prev) => ({ ...prev, [feature]: !prev[feature] }));
