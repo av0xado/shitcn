@@ -57,7 +57,7 @@ export default function CookieBanner() {
         </div>
         <div className="flex gap-2">
           <button className="rounded-md bg-neutral-800 px-3 py-1.5 text-xs text-neutral-400 transition-colors hover:bg-neutral-700">
-            Decline
+            Reject (Does nothing)
           </button>
           <button
             onMouseEnter={handleMouseEnterAccept}
