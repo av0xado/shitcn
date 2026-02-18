@@ -20,6 +20,17 @@ export default function Shell({ children }: { children: ReactNode }) {
             <div className="mx-auto max-w-4xl">{children}</div>
           </main>
         </div>
+        <footer className="border-t border-neutral-800 py-4 text-center text-sm text-neutral-500">
+          vibed with 💔 by{" "}
+          <a
+            href="https://github.com/av0xado"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-neutral-400 underline hover:text-neutral-200 transition-colors"
+          >
+            av0xado
+          </a>
+        </footer>
         <ChaosLayer />
       </div>
     </ChaosProvider>
