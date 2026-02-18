@@ -2,7 +2,7 @@
 
 ## Current State
 
-**Project Status**: ✅ Complete — shitcn parody component library docs site built and deployed; chaos effects now cover full page (header, sidebar, toasts, cookie banner); only control panel is immune
+**Project Status**: ✅ Complete — shitcn parody component library docs site built and deployed; chaos effects now cover full page (header, sidebar, toasts, cookie banner); only control panel is immune; hydration mismatch fully resolved
 
 The project has been transformed from a clean Next.js starter into a full parody component-library documentation site called "shitcn", featuring intentionally awful UI components and 6 toggleable chaos features.
 
@@ -76,3 +76,4 @@ The project has been transformed from a clean Next.js starter into a full parody
 | 2026-02-18 | Slowed TrippingBalls animations by further 2× (duration 12–48s, delay 0–12s, refresh interval 30s) |
 | 2026-02-18 | Reworked ToastContainer: each toast spawns at a random position along one of 4 screen edges with directional slide-in animation; added `data-chaos-immune="toast"` to preserve animations while blocking chaos filters |
 | 2026-02-18 | Fixed hydration mismatch in ControlPanel: added `suppressHydrationWarning` to chaos-active indicator elements (server renders all-false from DEFAULT_STATE, client reads localStorage) |
+| 2026-02-18 | Resolved persistent hydration mismatch: DEFAULT_STATE set to all-false; `dynamic(ssr:false)` in Navbar retained; chaos features start disabled |
