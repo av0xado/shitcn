@@ -144,11 +144,12 @@ export default function ControlPanel() {
         onClick={() => setIsOpen(!isOpen)}
         className="relative flex items-center gap-2 rounded-md border border-neutral-700 bg-neutral-900 px-3 py-1.5 text-sm font-medium text-neutral-200 transition-colors hover:bg-neutral-800 hover:text-white"
       >
-        <span className="relative flex h-2 w-2">
+        <span className="relative flex h-2 w-2" suppressHydrationWarning>
           {isAnyActive && (
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
           )}
           <span
+            suppressHydrationWarning
             className={`relative inline-flex h-2 w-2 rounded-full ${
               isAnyActive ? "bg-red-500" : "bg-neutral-600"
             }`}
