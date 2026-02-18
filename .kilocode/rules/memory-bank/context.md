@@ -2,7 +2,7 @@
 
 ## Current State
 
-**Project Status**: ✅ Complete — shitcn parody component library docs site built and deployed
+**Project Status**: ✅ Complete — shitcn parody component library docs site built and deployed; Control Panel z-index bug fixed
 
 The project has been transformed from a clean Next.js starter into a full parody component-library documentation site called "shitcn", featuring intentionally awful UI components and 6 toggleable chaos features.
 
@@ -71,3 +71,4 @@ The project has been transformed from a clean Next.js starter into a full parody
 | Initial | Template created with base setup |
 | 2026-02-18 | Built complete shitcn parody site with 6 chaos features, 12 components, control panel |
 | 2026-02-18 | Rendered Control Panel overlay via portal to fix stacking/visibility issue |
+| 2026-02-18 | Fixed portal root missing position/zIndex — panel was hidden behind page content; refactored to module-level singleton `getPortalRoot()` to satisfy strict ESLint rules (no setState in effects, no ref access during render) |
