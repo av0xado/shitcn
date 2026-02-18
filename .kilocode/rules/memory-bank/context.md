@@ -2,7 +2,7 @@
 
 ## Current State
 
-**Project Status**: ✅ Complete — shitcn parody component library docs site built and deployed; chaos effects now cover full page (header, sidebar, toasts, cookie banner); only control panel is immune; hydration mismatch fully resolved
+**Project Status**: ✅ Complete — shitcn parody component library docs site built and deployed; chaos effects now cover full page (header, sidebar, toasts, cookie banner); only control panel is immune; hydration mismatch fully resolved; DEFAULT_STATE restored to original (drunkMouse, unclickableCookieBanner, toastStorm, trippingBalls enabled on load)
 
 The project has been transformed from a clean Next.js starter into a full parody component-library documentation site called "shitcn", featuring intentionally awful UI components and 6 toggleable chaos features.
 
