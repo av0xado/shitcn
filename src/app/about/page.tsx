@@ -11,7 +11,7 @@ export default function AboutPage() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-white">What is this?</h2>
+        <h2 className="text-xl font-semibold text-white">Why does this exist? Good Question</h2>
         <p className="text-neutral-400">
           <strong className="text-white">shitcn</strong> is a parody
           component-library documentation site. It mimics the clean,
