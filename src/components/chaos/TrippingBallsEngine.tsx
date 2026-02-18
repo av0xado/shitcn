@@ -5,7 +5,8 @@ import { useEffect, useRef } from "react";
 function isImmune(el: Element): boolean {
   let current: Element | null = el;
   while (current) {
-    if (current.getAttribute("data-chaos-immune") === "true") return true;
+    const val = current.getAttribute("data-chaos-immune");
+    if (val === "true" || val === "toast") return true;
     current = current.parentElement;
   }
   return false;

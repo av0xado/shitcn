@@ -1,12 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
-interface Toast {
+export interface Toast {
   id: number;
   message: string;
   clicksToClose: number;
   clicks: number;
+  /** Which edge this toast spawns from: top | bottom | left | right (assigned by wrapper) */
+  edge?: "top" | "bottom" | "left" | "right";
+  /** Position along the edge as a percentage (0–100) (assigned by wrapper) */
+  edgePos?: number;
 }
 
 interface ToastContainerProps {
@@ -15,12 +19,70 @@ interface ToastContainerProps {
   ) => void;
 }
 
+/** Pick a random edge and a random position along it */
+function randomEdgePos(): { edge: Toast["edge"]; edgePos: number } {
+  const edges: Toast["edge"][] = ["top", "bottom", "left", "right"];
+  const edge = edges[Math.floor(Math.random() * edges.length)];
+  // Keep away from corners so the toast is fully visible
+  const edgePos = 10 + Math.random() * 80;
+  return { edge, edgePos };
+}
+
+/** Build inline style for a toast based on its edge + position */
+function toastStyle(
+  edge: Toast["edge"],
+  edgePos: number | undefined
+): React.CSSProperties {
+  const pos = edgePos ?? 50;
+  const base: React.CSSProperties = {
+    position: "fixed",
+    zIndex: 99970,
+    width: "18rem", // w-72
+    maxWidth: "calc(100vw - 2rem)",
+  };
+
+  switch (edge) {
+    case "top":
+      return { ...base, top: "1rem", left: `${pos}%`, transform: "translateX(-50%)" };
+    case "bottom":
+      return { ...base, bottom: "1rem", left: `${pos}%`, transform: "translateX(-50%)" };
+    case "left":
+      return { ...base, left: "1rem", top: `${pos}%`, transform: "translateY(-50%)" };
+    case "right":
+      return { ...base, right: "1rem", top: `${pos}%`, transform: "translateY(-50%)" };
+    default:
+      return { ...base, bottom: "1rem", right: "1rem" };
+  }
+}
+
+/** CSS animation name based on edge */
+function slideInClass(edge: Toast["edge"]): string {
+  switch (edge) {
+    case "top":    return "animate-slide-in-top";
+    case "bottom": return "animate-slide-in-bottom";
+    case "left":   return "animate-slide-in-left";
+    case "right":  return "animate-slide-in-right";
+    default:       return "animate-slide-in-bottom";
+  }
+}
+
 export default function ToastContainer({ registerSetter }: ToastContainerProps) {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
+  // Stable wrapped setter: injects random edge/edgePos for any toast that lacks one
+  const wrappedSetter = useCallback<React.Dispatch<React.SetStateAction<Toast[]>>>(
+    (action) => {
+      setToasts((prev) => {
+        const next = typeof action === "function" ? action(prev) : action;
+        return next.map((t) => (t.edge ? t : { ...t, ...randomEdgePos() }));
+      });
+    },
+    [] // setToasts is stable, no deps needed
+  );
+
   useEffect(() => {
-    registerSetter(setToasts);
-  }, [registerSetter]);
+    registerSetter(wrappedSetter);
+  }, [registerSetter, wrappedSetter]);
 
   const handleClose = (id: number) => {
     setToasts((prev) =>
@@ -28,9 +90,7 @@ export default function ToastContainer({ registerSetter }: ToastContainerProps) 
         .map((t) => {
           if (t.id === id) {
             const newClicks = t.clicks + 1;
-            if (newClicks >= t.clicksToClose) {
-              return null;
-            }
+            if (newClicks >= t.clicksToClose) return null;
             return { ...t, clicks: newClicks };
           }
           return t;
@@ -42,14 +102,13 @@ export default function ToastContainer({ registerSetter }: ToastContainerProps) 
   if (toasts.length === 0) return null;
 
   return (
-    <div
-      data-chaos-immune="true"
-      className="fixed bottom-4 right-4 z-[99970] flex max-h-[60vh] w-80 flex-col gap-2 overflow-y-auto"
-    >
-      {toasts.slice(-15).map((toast) => (
+    <>
+      {toasts.slice(-20).map((toast) => (
         <div
           key={toast.id}
-          className="animate-slide-in rounded-lg border border-neutral-700 bg-neutral-900 p-3 shadow-lg"
+          data-chaos-immune="toast"
+          className={`${slideInClass(toast.edge)} rounded-lg border border-neutral-700 bg-neutral-900 p-3 shadow-lg`}
+          style={toastStyle(toast.edge, toast.edgePos)}
         >
           <div className="flex items-start justify-between gap-2">
             <p className="flex-1 text-sm text-neutral-300">{toast.message}</p>
@@ -80,16 +139,21 @@ export default function ToastContainer({ registerSetter }: ToastContainerProps) 
         </div>
       ))}
       {toasts.length > 3 && (
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            setToasts([]);
-          }}
-          className="rounded-md bg-neutral-800 px-3 py-1.5 text-xs text-neutral-400 transition-colors hover:bg-neutral-700 hover:text-white"
+        <div
+          data-chaos-immune="toast"
+          style={{ position: "fixed", bottom: "1rem", left: "50%", transform: "translateX(-50%)", zIndex: 99971 }}
         >
-          Clear all ({toasts.length})
-        </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setToasts([]);
+            }}
+            className="rounded-md bg-neutral-800 px-3 py-1.5 text-xs text-neutral-400 transition-colors hover:bg-neutral-700 hover:text-white shadow-lg"
+          >
+            Clear all ({toasts.length})
+          </button>
+        </div>
       )}
-    </div>
+    </>
   );
 }

@@ -12,6 +12,50 @@
   }
 }
 
+@keyframes slide-in-top {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-120%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes slide-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(120%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-120%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(120%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
 @keyframes pulse-glow {
   0%, 100% {
     box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
@@ -24,6 +68,20 @@
 /* Toast slide-in animation */
 .animate-slide-in {
   animation: slide-in 0.3s ease-out;
+}
+
+/* Directional toast slide-in animations */
+.animate-slide-in-top {
+  animation: slide-in-top 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.animate-slide-in-bottom {
+  animation: slide-in-bottom 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.animate-slide-in-left {
+  animation: slide-in-left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.animate-slide-in-right {
+  animation: slide-in-right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Scrollbar styling for dark theme */
@@ -55,6 +113,11 @@ pre code {
   transform: none !important;
   filter: none !important;
   animation: none !important;
+}
+
+/* Toast elements: immune to chaos transforms/filters but keep their own animations */
+[data-chaos-immune="toast"] {
+  filter: none !important;
 }
 
 /* Selection color */

@@ -4,7 +4,7 @@ import { useEffect, useRef, useCallback } from "react";
 import { useChaos } from "@/context/ChaosContext";
 import DrunkMouseCursor from "./DrunkMouseCursor";
 import CookieBanner from "./CookieBanner";
-import ToastContainer from "./ToastContainer";
+import ToastContainer, { type Toast } from "./ToastContainer";
 import DrunkModeOverlay from "./DrunkModeOverlay";
 import TrippingBallsEngine from "./TrippingBallsEngine";
 
@@ -12,7 +12,8 @@ function isImmune(el: Element | null): boolean {
   if (!el) return false;
   let current: Element | null = el;
   while (current) {
-    if (current.getAttribute("data-chaos-immune") === "true") return true;
+    const val = current.getAttribute("data-chaos-immune");
+    if (val === "true" || val === "toast") return true;
     current = current.parentElement;
   }
   return false;
@@ -20,16 +21,10 @@ function isImmune(el: Element | null): boolean {
 
 export default function ChaosLayer() {
   const { state } = useChaos();
-  const toastsRef = useRef<
-    { id: number; message: string; clicksToClose: number; clicks: number }[]
-  >([]);
+  const toastsRef = useRef<Toast[]>([]);
   const toastIdRef = useRef(0);
   const setToastsCallback = useRef<
-    React.Dispatch<
-      React.SetStateAction<
-        { id: number; message: string; clicksToClose: number; clicks: number }[]
-      >
-    >
+    React.Dispatch<React.SetStateAction<Toast[]>>
   >(undefined);
 
   // Toast Storm: global click listener
@@ -76,18 +71,7 @@ export default function ChaosLayer() {
   }, [state.toastStorm]);
 
   const registerToastSetter = useCallback(
-    (
-      setter: React.Dispatch<
-        React.SetStateAction<
-          {
-            id: number;
-            message: string;
-            clicksToClose: number;
-            clicks: number;
-          }[]
-        >
-      >
-    ) => {
+    (setter: React.Dispatch<React.SetStateAction<Toast[]>>) => {
       setToastsCallback.current = setter;
     },
     []

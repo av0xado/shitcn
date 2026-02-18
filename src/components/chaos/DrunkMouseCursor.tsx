@@ -63,7 +63,8 @@ function isImmune(el: Element | null): boolean {
   if (!el) return false;
   let current: Element | null = el;
   while (current) {
-    if (current.getAttribute("data-chaos-immune") === "true") return true;
+    const val = current.getAttribute("data-chaos-immune");
+    if (val === "true" || val === "toast") return true;
     current = current.parentElement;
   }
   return false;
