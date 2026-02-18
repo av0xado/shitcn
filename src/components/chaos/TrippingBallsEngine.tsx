@@ -33,8 +33,8 @@ function getRandomElements(count: number): HTMLElement[] {
 }
 
 function generateRandomAnimation(): string {
-  const duration = 6 + Math.random() * 18; // 6-24s (3× slower)
-  const delay = Math.random() * 6;
+  const duration = 12 + Math.random() * 36; // 12-48s (6× slower)
+  const delay = Math.random() * 12;
   const direction = Math.random() > 0.5 ? "alternate" : "alternate-reverse";
 
   const maxRotate = (Math.random() - 0.5) * 15; // -7.5 to 7.5 deg
@@ -123,8 +123,8 @@ export default function TrippingBallsEngine() {
     // Initial application
     applyEffects();
 
-    // Refresh selection every 15 seconds (3× slower)
-    intervalRef.current = setInterval(applyEffects, 15000);
+    // Refresh selection every 30 seconds (6× slower)
+    intervalRef.current = setInterval(applyEffects, 30000);
 
     return () => {
       // Cleanup
