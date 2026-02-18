@@ -12,10 +12,8 @@ function getInitialPosition() {
 
 export default function CookieBanner() {
   const [position, setPosition] = useState(getInitialPosition);
-  const [dodgeCount, setDodgeCount] = useState(0);
 
   const dodge = useCallback(() => {
-    setDodgeCount((prev) => prev + 1);
     const bannerW = 400;
     const bannerH = 100;
     const padding = 80;
@@ -50,9 +48,7 @@ export default function CookieBanner() {
         <div className="flex-1">
           <p className="text-sm font-medium text-white">🍪 Cookie Notice</p>
           <p className="mt-1 text-xs text-neutral-400">
-            We use cookies to make your experience {dodgeCount > 3 ? "impossible" : "worse"}.
-            {dodgeCount > 5 && " You can't catch me."}
-            {dodgeCount > 10 && " 😈"}
+            We use cookies to make your experience worse.
           </p>
         </div>
         <div className="flex gap-2">
