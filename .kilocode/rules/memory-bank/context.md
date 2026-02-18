@@ -72,3 +72,4 @@ The project has been transformed from a clean Next.js starter into a full parody
 | 2026-02-18 | Built complete shitcn parody site with 6 chaos features, 12 components, control panel |
 | 2026-02-18 | Rendered Control Panel overlay via portal to fix stacking/visibility issue |
 | 2026-02-18 | Fixed portal root missing position/zIndex — panel was hidden behind page content; refactored to module-level singleton `getPortalRoot()` to satisfy strict ESLint rules (no setState in effects, no ref access during render) |
+| 2026-02-18 | Slowed TrippingBalls animations by 3× (duration 6–24s, delay 0–6s, refresh interval 15s) |
