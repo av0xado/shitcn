@@ -17,6 +17,7 @@ The project has been transformed from a clean Next.js starter into a full parody
 - [x] Created ChaosLayer for global chaos effects
 - [x] Added localStorage persistence for chaos state
 - [x] Implemented data-chaos-immune attribute system
+- [x] Rendered Control Panel overlay via portal to escape navbar stacking context
 - [x] All routes working: /, /docs, /docs/installation, /docs/usage, /components, /components/[slug], /showcase, /about, 404
 - [x] TypeScript strict mode passing
 - [x] ESLint passing (React 19 strict rules)
@@ -69,3 +70,4 @@ The project has been transformed from a clean Next.js starter into a full parody
 |------|---------|
 | Initial | Template created with base setup |
 | 2026-02-18 | Built complete shitcn parody site with 6 chaos features, 12 components, control panel |
+| 2026-02-18 | Rendered Control Panel overlay via portal to fix stacking/visibility issue |
