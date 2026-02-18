@@ -2,7 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ControlPanel from "@/components/ControlPanel";
+import dynamic from "next/dynamic";
+
+const ControlPanel = dynamic(() => import("@/components/ControlPanel"), {
+  ssr: false,
+});
 
 const navLinks = [
   { href: "/", label: "Home" },
