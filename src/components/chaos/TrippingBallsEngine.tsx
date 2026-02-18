@@ -6,17 +6,13 @@ function isImmune(el: Element): boolean {
   let current: Element | null = el;
   while (current) {
     if (current.getAttribute("data-chaos-immune") === "true") return true;
-    if (current.id === "main-content") return false; // Stop at main content
     current = current.parentElement;
   }
   return false;
 }
 
 function getRandomElements(count: number): HTMLElement[] {
-  const mainContent = document.getElementById("main-content");
-  if (!mainContent) return [];
-
-  const allElements = mainContent.querySelectorAll(
+  const allElements = document.querySelectorAll(
     "h1, h2, h3, p, span, a, button, div, li, code, pre, img"
   );
   const eligible: HTMLElement[] = [];

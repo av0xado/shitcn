@@ -9,7 +9,7 @@ import ChaosLayer from "@/components/chaos/ChaosLayer";
 export default function Shell({ children }: { children: ReactNode }) {
   return (
     <ChaosProvider>
-      <div className="flex min-h-screen flex-col bg-neutral-950 text-neutral-100">
+      <div id="app-root" className="flex min-h-screen flex-col bg-neutral-950 text-neutral-100">
         <Navbar />
         <div className="relative z-0 flex flex-1">
         <Sidebar />
