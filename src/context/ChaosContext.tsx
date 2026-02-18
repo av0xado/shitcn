@@ -53,12 +53,12 @@ export const CHAOS_FEATURES: { key: ChaosFeature; label: string; description: st
 ];
 
 const DEFAULT_STATE: ChaosState = {
-  drunkMouse: true,
-  unclickableCookieBanner: true,
-  toastStorm: true,
+  drunkMouse: false,
+  unclickableCookieBanner: false,
+  toastStorm: false,
   whackAMole: false,
   drunkMode: false,
-  trippingBalls: true,
+  trippingBalls: false,
 };
 
 interface ChaosContextValue {
