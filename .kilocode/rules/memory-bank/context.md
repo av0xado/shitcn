@@ -22,6 +22,7 @@ The project has been transformed from a clean Next.js starter into a full parody
 - [x] TypeScript strict mode passing
 - [x] ESLint passing (React 19 strict rules)
 - [x] Next.js build succeeding (22 pages generated)
+- [x] Adjusted TrippingBalls animation delay to 5–20s
 
 ## Current Structure
 
@@ -74,6 +75,7 @@ The project has been transformed from a clean Next.js starter into a full parody
 | 2026-02-18 | Fixed portal root missing position/zIndex — panel was hidden behind page content; refactored to module-level singleton `getPortalRoot()` to satisfy strict ESLint rules (no setState in effects, no ref access during render) |
 | 2026-02-18 | Slowed TrippingBalls animations by 3× (duration 6–24s, delay 0–6s, refresh interval 15s) |
 | 2026-02-18 | Slowed TrippingBalls animations by further 2× (duration 12–48s, delay 0–12s, refresh interval 30s) |
+| 2026-02-18 | Updated TrippingBalls delay range to 5–20s |
 | 2026-02-18 | Reworked ToastContainer: each toast spawns at a random position along one of 4 screen edges with directional slide-in animation; added `data-chaos-immune="toast"` to preserve animations while blocking chaos filters |
 | 2026-02-18 | Fixed hydration mismatch in ControlPanel: added `suppressHydrationWarning` to chaos-active indicator elements (server renders all-false from DEFAULT_STATE, client reads localStorage) |
 | 2026-02-18 | Resolved persistent hydration mismatch: DEFAULT_STATE set to all-false; `dynamic(ssr:false)` in Navbar retained; chaos features start disabled |
