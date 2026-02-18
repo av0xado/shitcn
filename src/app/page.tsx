@@ -9,15 +9,12 @@ export default function Home() {
           The anti-component library
         </div>
         <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl">
-          Build worse UIs,{" "}
-          <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
-            faster.
-          </span>
+          shitcn 💩
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-neutral-400">
-          <strong className="text-white">shitcn</strong> is a collection of
-          beautifully crafted, intentionally awful UI components. Copy and paste
-          them into your apps to guarantee a terrible user experience.
+          Beautifully broken components for the modern web.
+          <br />
+          A collection of intentionally awful UI components and UX antipatterns. Copy and paste into your project. Open source. Open wounds.
         </p>
         <div className="flex items-center justify-center gap-4">
           <Link
