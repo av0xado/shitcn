@@ -34,7 +34,7 @@ function getRandomElements(count: number): HTMLElement[] {
 
 function generateRandomAnimation(): string {
   const duration = 48 + Math.random() * 144; // 48-192s (4× slower)
-  const delay = Math.random() * 48;
+  const delay = 12 + Math.random() * 36; // 12-48s
   const direction = Math.random() > 0.5 ? "alternate" : "alternate-reverse";
 
   const maxRotate = (Math.random() - 0.5) * 15; // -7.5 to 7.5 deg
