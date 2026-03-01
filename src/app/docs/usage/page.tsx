@@ -44,10 +44,9 @@ export default function MyForm() {
           Chaos Features (Global)
         </h2>
         <p className="text-neutral-400">
-          Beyond individual components, shitcn includes global chaos features
-          that affect the entire page. These are controlled via the{" "}
-          <strong className="text-white">Control Panel</strong> (top-right
-          button in the navbar).
+          The six chaos features are now exposed as reusable building blocks.
+          They are no longer mounted globally in this docs app, but can be
+          composed in your own runtime when you are ready.
         </p>
         <div className="overflow-hidden rounded-lg border border-neutral-800">
           <table className="w-full text-sm">
@@ -114,52 +113,68 @@ export default function MyForm() {
 
       <div className="space-y-4">
         <h2 className="text-xl font-semibold text-white">
-          Using the ChaosProvider
+          Chaos Runtime API
         </h2>
         <p className="text-neutral-400">
-          If you want to integrate chaos features into your own app, wrap your
-          app with the ChaosProvider:
+          Use the feature runtime with explicit state. This keeps behavior
+          installable and app-controlled.
         </p>
         <CodeBlock
-          code={`import { ChaosProvider } from "@/context/ChaosContext"
+          code={`"use client"
+import { useState } from "react"
+import {
+  ChaosFeatureRuntime,
+  DEFAULT_CHAOS_STATE,
+  type ChaosFeatureState
+} from "@/features/chaos"
 
-export default function Layout({ children }) {
+export function ChaosHost() {
+  const [state, setState] = useState<ChaosFeatureState>({
+    ...DEFAULT_CHAOS_STATE,
+    toastStorm: true
+  })
+
   return (
-    <ChaosProvider>
-      {children}
-    </ChaosProvider>
+    <>
+      <button
+        onClick={() =>
+          setState((prev) => ({ ...prev, drunkMouse: !prev.drunkMouse }))
+        }
+      >
+        Toggle Drunk Mouse
+      </button>
+      <ChaosFeatureRuntime state={state} />
+    </>
   )
 }`}
           language="tsx"
-          filename="app/layout.tsx"
+          filename="components/ChaosHost.tsx"
         />
       </div>
 
       <div className="space-y-4">
         <h2 className="text-xl font-semibold text-white">
-          Reading Chaos State
+          Whack-a-Mole Hook
         </h2>
         <p className="text-neutral-400">
-          Access the chaos state in any client component:
+          For scoped interactions (like demos), use the standalone hook.
         </p>
         <CodeBlock
           code={`"use client"
-import { useChaos } from "@/context/ChaosContext"
+import { useWhackAMole } from "@/features/chaos"
 
-export function MyComponent() {
-  const { state, toggle } = useChaos()
+export function Sandbox({ enabled }: { enabled: boolean }) {
+  const ref = useWhackAMole(enabled)
 
   return (
-    <div>
-      <p>Drunk Mouse: {state.drunkMouse ? "ON" : "OFF"}</p>
-      <button onClick={() => toggle("drunkMouse")}>
-        Toggle Drunk Mouse
-      </button>
+    <div ref={ref}>
+      <button>A</button>
+      <button>B</button>
     </div>
   )
 }`}
           language="tsx"
-          filename="components/MyComponent.tsx"
+          filename="components/Sandbox.tsx"
         />
       </div>
 

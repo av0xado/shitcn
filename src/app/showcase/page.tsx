@@ -32,7 +32,7 @@ const showcaseItems = [
   {
     title: "The Full shitcn Experience",
     description:
-      "All chaos features enabled simultaneously. Enable everything from the Control Panel and try to use the site. We dare you.",
+      "All chaos features enabled simultaneously via a custom runtime host. We dare you.",
     components: [],
     difficulty: "Legendary",
   },
@@ -53,8 +53,8 @@ export default function ShowcasePage() {
         <h1 className="text-3xl font-bold text-white">Showcase</h1>
         <p className="mt-3 text-lg text-neutral-400">
           Real-world examples of shitcn components working together to create
-          truly terrible user experiences. These are conceptual showcases — enable
-          chaos features from the Control Panel to experience them live.
+          truly terrible user experiences. These are conceptual showcases while
+          global chaos wiring is being refactored.
         </p>
       </div>
 
@@ -97,9 +97,11 @@ export default function ShowcasePage() {
           Want to try the full experience?
         </h3>
         <p className="mt-2 text-sm text-neutral-400">
-          Open the Control Panel (top-right) and click{" "}
-          <strong className="text-red-400">🔥 Enable All</strong> to activate
-          every chaos feature at once.
+          Use the new chaos runtime API from{" "}
+          <code className="rounded bg-neutral-800 px-1 py-0.5 text-xs text-neutral-300">
+            /docs/usage
+          </code>{" "}
+          to mount and toggle all six features in your own host component.
         </p>
         <p className="mt-1 text-xs text-neutral-600">
           (We are not responsible for any frustration, confusion, or existential

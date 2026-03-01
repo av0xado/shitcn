@@ -28,18 +28,15 @@ export default function AboutPage() {
 
       <div className="space-y-4">
         <h2 className="text-xl font-semibold text-white">
-          🎛️ The Control Panel
+          🧩 Chaos Feature Modules
         </h2>
         <p className="text-neutral-400">
-          The site includes a <strong className="text-white">Control Panel</strong>{" "}
-          accessible via the{" "}
-          <code className="rounded bg-neutral-800 px-1.5 py-0.5 text-sm text-neutral-300">
-            Show Control Panel
-          </code>{" "}
-          button in the top-right corner of the navigation bar.
+          The old global control panel has been removed so the project can
+          evolve into a production-ready component library with explicit,
+          installable feature modules.
         </p>
         <div className="rounded-lg border border-neutral-800 bg-neutral-900/50 p-6 space-y-3">
-          <h3 className="font-medium text-white">Control Panel Features:</h3>
+          <h3 className="font-medium text-white">Implemented Features:</h3>
           <ul className="list-inside list-disc space-y-2 text-sm text-neutral-400">
             <li>
               <strong className="text-neutral-200">Drunk Mouse</strong> — Cursor
@@ -73,10 +70,9 @@ export default function AboutPage() {
 
       <div className="rounded-lg border border-green-500/20 bg-green-500/5 p-4">
         <p className="text-sm text-green-400">
-          🛡️ <strong>Safety note:</strong> The Control Panel is completely
-          immune to all chaos effects. No matter how much chaos you enable, you
-          can always open the Control Panel to disable features and regain
-          control of the page.
+          🛡️ <strong>Refactor note:</strong> Chaos effects are no longer mounted
+          globally in this docs app. They are preserved as reusable modules for
+          future `npx` install workflows.
         </p>
       </div>
 
@@ -119,9 +115,9 @@ export default function AboutPage() {
         <ul className="list-inside list-disc space-y-1 text-neutral-400">
           <li>Next.js (App Router) with TypeScript</li>
           <li>Tailwind CSS for styling</li>
-          <li>React Context for chaos state management</li>
+          <li>Typed feature modules (`src/features/chaos`) for reusable runtime APIs</li>
           <li>Zero external dependencies for chaos features</li>
-          <li>localStorage for persisting chaos preferences</li>
+          <li>Client-side hooks/components for explicit host-controlled behavior</li>
         </ul>
       </div>
 

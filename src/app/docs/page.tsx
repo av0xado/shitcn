@@ -50,7 +50,7 @@ export default function DocsPage() {
           </li>
           <li>
             <strong className="text-neutral-200">Interactive:</strong> Toggle
-            chaos features on and off via the Control Panel
+            chaos feature modules in your own runtime via the API
           </li>
           <li>
             <strong className="text-neutral-200">Safe:</strong> Nothing here
@@ -60,20 +60,15 @@ export default function DocsPage() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-white">The Control Panel</h2>
+        <h2 className="text-xl font-semibold text-white">Chaos Runtime Status</h2>
         <p className="text-neutral-400">
-          Click the{" "}
-          <code className="rounded bg-neutral-800 px-1.5 py-0.5 text-sm text-neutral-300">
-            Show Control Panel
-          </code>{" "}
-          button in the top-right corner of the navbar to access the chaos
-          control panel. From there, you can toggle individual chaos features
-          on and off.
+          The previous global control panel has been removed from this docs app
+          as part of a production-focused refactor.
         </p>
         <p className="text-neutral-400">
-          The control panel is <strong className="text-white">immune</strong>{" "}
-          to all chaos effects — it will always remain usable, no matter how
-          much chaos you enable.
+          All six chaos features are still implemented and now exposed as
+          reusable modules under <code className="rounded bg-neutral-800 px-1.5 py-0.5 text-sm text-neutral-300">src/features/chaos</code>{" "}
+          for explicit, app-controlled integration.
         </p>
       </div>
 

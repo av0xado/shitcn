@@ -93,7 +93,9 @@ export default function Home() {
       <section className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-8 text-center">
         <h2 className="text-2xl font-bold text-white">Ready to make things worse?</h2>
         <p className="mt-2 text-neutral-400">
-          Open the <strong className="text-white">Control Panel</strong> (top-right button) to enable chaos features and experience the full shitcn effect.
+          The global chaos runtime has been detached from this docs app while we
+          refactor toward installable production modules. Feature pages and
+          demos remain available.
         </p>
         <div className="mt-6 flex items-center justify-center gap-4">
           <Link

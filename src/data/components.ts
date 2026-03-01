@@ -9,6 +9,66 @@ export interface ComponentEntry {
 
 export const components: ComponentEntry[] = [
   {
+    slug: "drunk-mouse",
+    name: "DrunkMouse",
+    description:
+      "Your cursor has had a few too many. Elements jitter when hovered and precision goes out the window.",
+    category: "interactive",
+    hasDemo: false,
+    previewDescription:
+      "Feature page for the control-panel Drunk Mouse chaos effect.",
+  },
+  {
+    slug: "unclickable-cookie-banner",
+    name: "UnclickableCookieBanner",
+    description:
+      "A cookie banner that dodges your cursor so consent becomes an endurance sport.",
+    category: "interactive",
+    hasDemo: false,
+    previewDescription:
+      "Feature page for the control-panel Unclickable Cookie Banner effect.",
+  },
+  {
+    slug: "toast-storm-chaos",
+    name: "ToastStormChaos",
+    description:
+      "Every click creates another useless notification until the page becomes a stack of panic.",
+    category: "feedback",
+    hasDemo: false,
+    previewDescription:
+      "Feature page for the control-panel Toast Storm global effect.",
+  },
+  {
+    slug: "whack-a-mole-controls",
+    name: "WhackAMoleControls",
+    description:
+      "Buttons in demo zones trigger random neighbors instead, so intent is optional.",
+    category: "interactive",
+    hasDemo: false,
+    previewDescription:
+      "Feature page for the control-panel Whack-a-Mole Controls effect.",
+  },
+  {
+    slug: "drunk-mode",
+    name: "DrunkMode",
+    description:
+      "Main content gets blurrier over time, turning every task into a soft-focus challenge.",
+    category: "layout",
+    hasDemo: false,
+    previewDescription:
+      "Feature page for the control-panel Drunk Mode effect.",
+  },
+  {
+    slug: "tripping-balls",
+    name: "TrippingBalls",
+    description:
+      "Random transforms and color shifts make the interface look like it lost the plot.",
+    category: "layout",
+    hasDemo: false,
+    previewDescription:
+      "Feature page for the control-panel Tripping Balls effect.",
+  },
+  {
     slug: "confirm-button",
     name: "ConfirmButton",
     description:

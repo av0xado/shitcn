@@ -2,11 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import dynamic from "next/dynamic";
-
-const ControlPanel = dynamic(() => import("@/components/ControlPanel"), {
-  ssr: false,
-});
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -20,10 +15,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header
-      data-chaos-immune="true"
-      className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur-md"
-    >
+    <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4 sm:px-6">
         {/* Logo */}
         <Link
@@ -59,10 +51,7 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Control Panel Button */}
-        <div className="flex items-center gap-3">
-          <ControlPanel />
-        </div>
+        <div />
       </div>
     </header>
   );

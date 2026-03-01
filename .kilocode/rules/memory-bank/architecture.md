@@ -118,3 +118,12 @@ For simple needs:
 For complex needs (add when necessary):
 - Zustand for client state
 - React Query for server state
+
+## Current Refactor Pattern (2026-03-01)
+
+- Global chaos demo controls were removed from the app shell.
+- Chaos behaviors are preserved as reusable modules under `src/features/chaos`.
+- Runtime behavior is now explicit/composable via:
+  - `ChaosFeatureRuntime` for mounting visual/global effects from passed state
+  - `useWhackAMole(enabled)` for scoped button-chaos behavior
+  - `CHAOS_FEATURES`, `DEFAULT_CHAOS_STATE`, and typed feature keys/state for future package exports

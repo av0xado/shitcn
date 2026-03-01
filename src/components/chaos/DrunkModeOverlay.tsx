@@ -7,7 +7,7 @@ export default function DrunkModeOverlay() {
   const intervalRef = useRef<ReturnType<typeof setInterval>>(undefined);
 
   useEffect(() => {
-    // Gradually increase blur over time on the whole app (excluding control panel portal)
+    // Gradually increase blur over time on the app root.
     blurLevelRef.current = 0;
     const appRoot = document.getElementById("app-root");
     if (appRoot) {
